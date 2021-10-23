@@ -1,0 +1,69 @@
+
+    什么是代理：
+        就是在开发中对某些类/方法进行增强
+
+    代理的那个对象叫做：目标对象
+
+    实现代理的两种方式：
+
+        静态代理： 1.继承
+                     MDaoSubLog 代理类 会继承目标类
+                     代理对象和目标对象父子关系  代理对象是子， 目标对象是父
+
+                   2.接口
+                      1.代理类(ProxyObject)  和目标类  实现同一个接口
+                      2.代理对象当中必须包含目标对象
+
+                   静态代理的缺点：
+                   * 1. 会产生很多的代理类
+                   * 2. 产生的代理类只能代理既定的接口
+
+        动态代理：
+             /**动态：
+             * newProxyInstance
+             * 1. 他会产生一个字符串  代理类的源码
+             * 2. 把这个字符串输出到一个 .java ($Proxy.java)文件中
+             * 3. 会把这个$Proxy.java 动态编译他成为一个$Proxy.class
+             * 4. 会通过一个类加载器把这个 $Proxy.class 加载到 JVM 当中
+             * 5. Class.forName("XXX").newInstance 反射实例化这个对象 proxyObject
+             *
+             * 6.----直接在内存中产生了字节码
+             */
+            //        MDao dao = (MDao) Proxy.newProxyInstance(Test.class.getClassLoader(),
+            //                        new Class[]{MDao.class},
+            //                        new CustomInvocationHandler(mDao));
+            //
+            //        System.out.println(dao.query(1,"aaaa"));
+
+                   // System.out.println(mDao.query(1,"son road"));
+
+
+        JDK动态为什么是接口，不能采用继承？
+        我们产生的动态代理对象继承了一个Proxy父类，所以JDK不能继续继承其他类
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
